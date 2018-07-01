@@ -17,4 +17,6 @@
     <string name="detail_genre_placeholder">Genre</string>
     <string name="detail_rating_placeholder">Rating</string>
     <string name="detail_plot_placeholder">Plot</string>
+
+    <string name="internet_error">No connection to the internet right now! Check back later! :-(</string>
 </resources>

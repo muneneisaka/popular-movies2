@@ -1,20 +1,13 @@
 package com.munenendereba.popularmovies;
 
+//Movie model
 public class Movie {
-    //use @SerializedName for those fields which are differently named than the name in json
-    //@SerializedName("id")
     private String movieId; //id in API
-    //@SerializedName("title")
     private String movieName; //title in API
-    //@SerializedName("original_title")
     private String originalTitle;
-    //@SerializedName("overview")
     private String plotSynopsis;//overview in API
-    //@SerializedName("vote_average")
     private String userRating;//vote_average in API
-    //@SerializedName("release_date")
     private String releaseDate;
-    //@SerializedName("poster_path")
     private String moviePosterImage;
     private int movieIndex;
 
@@ -30,6 +23,7 @@ public class Movie {
         this.moviePosterImage = poster;
     }
 
+    //getters and setters for the Movie model fields
     public String getMovieName() {
         return movieName;
     }
@@ -85,7 +79,6 @@ public class Movie {
     public void setMovieId(String movieId) {
         this.movieId = movieId;
     }
-
 
     public int getMovieIndex() {
         return movieIndex;

@@ -4,16 +4,8 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvNumbers"
+        android:id="@+id/rvImageViews"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-    <!--    <ImageView android:id="@+id/imageViewMain"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@mipmap/ic_launcher"
-            android:contentDescription="@string/detail_original_title_label"/>
-
-            -->
 
 </RelativeLayout>

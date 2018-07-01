@@ -12,6 +12,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+//Movie Adapter to load the recycler view
 public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecyclerViewAdapter.ViewHolder> {
     private ArrayList<String> movieData;
     private LayoutInflater mInflater;
@@ -25,7 +26,6 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
     @Override
     public MovieRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.recyclerview_item, parent, false);
-        //Picasso.with
         return new ViewHolder(view);
     }
 
