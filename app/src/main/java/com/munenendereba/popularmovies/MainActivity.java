@@ -90,12 +90,11 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
     //check the menu item selected and launch the appropriate API call for sorting the movies
     //learnt about Items menu here https://code.tutsplus.com/tutorials/android-sdk-implement-an-options-menu--mobile-9453
     public boolean onOptionsItemSelected(MenuItem item) {
-        String path = "https://api.themoviedb.org/3/discover/movie?api_key=" + TMDBApiKey + "&language=en-US&include_adult=false&include_video=false&page=1";
         if (item.getItemId() == R.id.sort_popular) {
-            fetchMoviesData(path + "&sort_by=popularity.desc");
+            fetchMoviesData("https://api.themoviedb.org/3/movie/popular?api_key=" + TMDBApiKey + "&language=en-US&page=1");
             return true;
         } else if (item.getItemId() == R.id.sort_top_rated) {
-            fetchMoviesData(path + "&sort_by=vote_average.desc");
+            fetchMoviesData("https://api.themoviedb.org/3/movie/top_rated?api_key=" + TMDBApiKey + "&language=en-US&page=1");
             return true;
         }
         return super.onOptionsItemSelected(item);
