@@ -8,57 +8,65 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="185dp"
+        android:layout_width="204dp"
+        android:layout_height="243dp"
+        android:layout_marginTop="4dp"
         android:contentDescription="@string/movie_pic_content_description"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.006"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/alert_dark_frame" />
 
     <TextView
-        android:id="@+id/tv_label_original_title"
-        android:layout_width="103dp"
-        android:layout_height="23dp"
+        android:id="@+id/tv_original_title"
+        android:layout_width="124dp"
+        android:layout_height="41dp"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="13dp"
-        android:text="@string/detail_original_title_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
+        android:layout_marginTop="16dp"
+        android:text="@string/detail_original_title_placeholder"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_label_release_date"
+        android:id="@+id/tv_release_date"
         android:layout_width="105dp"
         android:layout_height="25dp"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="13dp"
-        android:text="@string/detail_year_release_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_label_original_title" />
+        android:layout_marginTop="20dp"
+        android:text="@string/detail_year_release_placeholder"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/tv_original_title" />
 
     <TextView
-        android:id="@+id/tv_label_plot_synopsis"
+        android:id="@+id/tv_user_rating"
         android:layout_width="105dp"
-        android:layout_height="25dp"
+        android:layout_height="22dp"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="14dp"
-        android:text="Plot synopsis:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_label_user_rating" />
+        android:layout_marginTop="20dp"
+        android:text="@string/detail_rating_placeholder"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/tv_release_date" />
 
-    <TextView
-        android:id="@+id/tv_label_user_rating"
-        android:layout_width="105dp"
-        android:layout_height="25dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="17dp"
-        android:text="User rating:"
+    <ScrollView
+        android:layout_width="372dp"
+        android:layout_height="182dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="27dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_label_release_date" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <TextView
+            android:id="@+id/tv_plot_synopsis"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/detail_plot_placeholder"
+            tools:layout_editor_absoluteX="25dp"
+            tools:layout_editor_absoluteY="263dp" />
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

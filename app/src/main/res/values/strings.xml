@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Popular Movies</string>
-    <string name="errorMessageClickedMovie">Umeclick nini sasa!</string>
-    <string name="movie_pic_content_description">Hii ni filamu</string>
+    <string name="errorMessageClickedMovie">You have an error in clicked movie!</string>
+    <string name="movie_pic_content_description">Sample movie description</string>
 
     <!-- Detail Strings begin -->
     <string name="detail_original_title_label">Original title:</string>
@@ -17,41 +17,4 @@
     <string name="detail_genre_placeholder">Genre</string>
     <string name="detail_rating_placeholder">Rating</string>
     <string name="detail_plot_placeholder">Plot</string>
-
-    <string name="movie_list_output">
-        {[{"vote_count":2613,"id":383498,"video":false,"vote_average":7.6,"title":"Deadpool 2","popularity":125.768776,"poster_path":"\/to0spRl1CMDvyUbOnbb4fTk3VAd.jpg","original_language":"en","original_title":"Deadpool 2","genre_ids":[28,35,878],"backdrop_path":"\/3P52oz9HPQWxcwHOwxtyrVV1LKi.jpg","adult":false,"overview":"Wisecracking mercenary Deadpool battles the evil and powerful Cable and other bad guys to save a boy's life.","release_date":"2018-05-15"},{"vote_count":5192,"id":299536,"video":false,"vote_average":8.4,"title":"Avengers: Infinity War","popularity":113.99943,"poster_path":"\/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg","original_language":"en","original_title":"Avengers: Infinity War","genre_ids":[12,878,14,28],"backdrop_path":"\/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg","adult":false,"overview":"As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain.","release_date":"2018-04-25"},{"vote_count":6980,"id":284053,"video":false,"vote_average":7.4,"title":"Thor: Ragnarok","popularity":99.677274,"poster_path":"\/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg","original_language":"en","original_title":"Thor: Ragnarok","genre_ids":[28,12,14,878,35],"backdrop_path":"\/kaIfm5ryEOwYg8mLbq8HkPuM1Fo.jpg","adult":false,"overview":"Thor is on the other side of the universe and finds himself in a race against time to get back to Asgard to stop Ragnarok, the prophecy of destruction to his homeworld and the end of Asgardian civilization, at the hands of an all-powerful new threat, the ruthless Hela.","release_date":"2017-10-25"}]}
-
-    </string>
-
-    <!-- Detail Strings end here -->
-
-    <string-array name="moviesListSample">
-        <item>Kwisha Wewe</item>
-        <item>Tarzan</item>
-        <item>A Series of Majo</item>
-        <item>Kinot Njuu aja</item>
-        <item>Mati</item>
-        <item>Twende Leo</item>
-        <item>Hulk</item>
-        <item>Terempe</item>
-        <item>Askari Kombo</item>
-        <item>Avengers</item>
-        <item>Trieamvirate</item>
-        <item>Tell me nothing</item>
-        <item>The Man Without a Nose</item>
-        <item>Kutafuta Uhuru Bana</item>
-        <item>Aanchia Gwe Shauri Yaku</item>
-        <item>Tiga Kumbira Ruko</item>
-        <item>Zillow</item>
-    </string-array>
-
-    <string-array name="movieImagesSample">
-        <item>https://en.wikipedia.org/wiki/Baahubali_2:_The_Conclusion#/media/File:Baahubali_the_Conclusion.jpg</item>
-        <item>https://en.wikipedia.org/wiki/Watu_Wote#/media/File:Watu_Wote_poster.png</item>
-        <item>https://en.wikipedia.org/wiki/Nairobi_Half_Life#/media/File:Nairobi_half_life_movie_poster.jpg</item>
-        <item>https://en.wikipedia.org/wiki/The_Lord_of_the_Rings:_The_Return_of_the_King#/media/File:Lord_of_the_Rings_-_The_Return_of_the_King.jpg</item>
-        <item>https://en.wikipedia.org/wiki/The_Lord_of_the_Rings:_The_Fellowship_of_the_Ring#/media/File:The_Lord_of_the_Rings_The_Fellowship_of_the_Ring_(2001)_theatrical_poster.jpg</item>
-        <item>https://en.wikipedia.org/wiki/The_Lord_of_the_Rings:_The_Two_Towers#/media/File:Lord_of_the_Rings_-_The_Two_Towers.jpg</item>
-        <item>https://en.wikipedia.org/wiki/The_First_Grader#/media/File:The_First_Graderfilm.jpg</item>
-    </string-array>
 </resources>

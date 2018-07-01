@@ -1,20 +1,34 @@
 package com.munenendereba.popularmovies;
 
-import com.google.gson.annotations.SerializedName;
-
-import java.util.Date;
-
 public class Movie {
     //use @SerializedName for those fields which are differently named than the name in json
-    @SerializedName("title")
-    private String movieName;
+    //@SerializedName("id")
+    private String movieId; //id in API
+    //@SerializedName("title")
+    private String movieName; //title in API
+    //@SerializedName("original_title")
     private String originalTitle;
-    @SerializedName("overview")
+    //@SerializedName("overview")
     private String plotSynopsis;//overview in API
-    @SerializedName("vote_average")
+    //@SerializedName("vote_average")
     private String userRating;//vote_average in API
-    private Date releaseDate;
+    //@SerializedName("release_date")
+    private String releaseDate;
+    //@SerializedName("poster_path")
     private String moviePosterImage;
+    private int movieIndex;
+
+    //constructor
+    public Movie(String movieId, int movieIndex, String title, String originalTitle, String poster, String userRating, String releaseDate, String plotSynopsis) {
+        this.movieId = movieId;
+        this.movieIndex = movieIndex;
+        this.movieName = title;
+        this.originalTitle = originalTitle;
+        this.userRating = userRating;
+        this.releaseDate = releaseDate;
+        this.plotSynopsis = plotSynopsis;
+        this.moviePosterImage = poster;
+    }
 
     public String getMovieName() {
         return movieName;
@@ -48,11 +62,11 @@ public class Movie {
         this.userRating = userRating;
     }
 
-    public Date getReleaseDate() {
+    public String getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(Date releaseDate) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 
@@ -64,4 +78,20 @@ public class Movie {
         this.moviePosterImage = moviePosterImage;
     }
 
+    public String getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(String movieId) {
+        this.movieId = movieId;
+    }
+
+
+    public int getMovieIndex() {
+        return movieIndex;
+    }
+
+    public void setMovieIndex(int movieIndex) {
+        this.movieIndex = movieIndex;
+    }
 }

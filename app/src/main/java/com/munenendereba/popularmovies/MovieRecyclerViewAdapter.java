@@ -12,9 +12,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-
 public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecyclerViewAdapter.ViewHolder> {
-    private ArrayList<String> movieData = new ArrayList<>();
+    private ArrayList<String> movieData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
@@ -33,25 +32,18 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
     //binds the data to the textview in each cell
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        //holder.myTextView.setText(mData[position]);
         Picasso.get()
                 .load(movieData.get(position))
-                .placeholder(R.drawable.ic_launcher_background)
+                .placeholder(R.drawable.ic_launcher_foreground)
                 .error(R.drawable.ic_launcher_foreground)
                 .fit()
                 .into(holder.movieImageView);
     }
 
-
     //get total number of cells
     @Override
     public int getItemCount() {
         return movieData.size();
-    }
-
-    //convenience method for getting data at click position
-    String getITem(int id) {
-        return movieData.get(id);
     }
 
     //allows click events to be caught
@@ -70,7 +62,6 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
         ViewHolder(View itemView) {
             super(itemView);
             movieImageView = itemView.findViewById(R.id.movie_image);
-            //Picasso.with()
             itemView.setOnClickListener(this);
         }
 
