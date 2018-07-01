@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
         setContentView(R.layout.activity_main);
 
         //check for the orientation of the screen i.e. portrait and landscape and show the appropriate layout i.e. 2 or 4 columns
+        //learnt how to check for orientation here https://stackoverflow.com/questions/3663665/how-can-i-get-the-current-screen-orientation
         int orientation = this.getResources().getConfiguration().orientation;
         if (orientation == Configuration.ORIENTATION_PORTRAIT) numberOfColumns = 2;
         else if (orientation == Configuration.ORIENTATION_LANDSCAPE) numberOfColumns = 4;
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = connectivityManager.getActiveNetworkInfo();
         //Log.d("INTERNET-CHECKER", "There's Internet Munene");
-//Log.d("INTERNET-CHECKER", "Hakuna Internet Munene");
+        //Log.d("INTERNET-CHECKER", "Hakuna Internet Munene");
         return info != null && info.isConnectedOrConnecting();
     }
 
@@ -87,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
     }
 
     //check the menu item selected and launch the appropriate API call for sorting the movies
+    //learnt about Items menu here https://code.tutsplus.com/tutorials/android-sdk-implement-an-options-menu--mobile-9453
     public boolean onOptionsItemSelected(MenuItem item) {
         String path = "https://api.themoviedb.org/3/discover/movie?api_key=" + TMDBApiKey + "&language=en-US&include_adult=false&include_video=false&page=1";
         if (item.getItemId() == R.id.sort_popular) {
@@ -122,6 +124,7 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
     }
 
     private void fetchMoviesData(String path) {
+        //learnt how to use volley to make API calls here  https://inducesmile.com/android/android-json-parsing-using-gson-and-recyclerview/
         RequestQueue queue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, path, new Response.Listener<String>() {
 
@@ -150,6 +153,8 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
             //[] - array; {} - object
             String imagePath;
 
+            //learnt how to process json from my sandwich club assignment
+            //and here https://stackoverflow.com/questions/9605913/how-do-i-parse-json-in-android
             for (int i = 0; i < jr.length(); i++) {
                 imagePath = "http://image.tmdb.org/t/p/w185" + jr.getJSONObject(i).getString("poster_path").toString();
                 res.add(imagePath);
