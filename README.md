@@ -10,6 +10,12 @@ Follow the instructions at https://developers.themoviedb.org/3/getting-started/i
 Once you have the key, add it to a gradle.properties in the .gradle directory in your computer under the name "TMDBAPIKey"; 
 Your gradle.properties file should now look like this TMDBAPIKey = "api key here"
 
+<h3>Functionality</h3>
+<ul>
+<li>Show a list of movies as posters by querying the popular movies end point</li>
+<li>When a user clicks a poster, show movie details such as: original movie title, year it came out, user ratings, and plot</li>
+<li>Allow users to sort the movies by user rating and popularity</li>
+ </ul>
 
 <b>Author: </b>
 <a href="https://github.com/muneneisaka" target="_blank">Munene Ndereba</a>
