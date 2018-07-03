@@ -1,6 +1,6 @@
 # Popular Movies
 
-Popular Movies allows users to view popular movies from The Movie Database (TMDB - https://themoviedb.org) 
+Popular Movies allows users to view popular movies from The Movie Database (TMDB - https://themoviedb.org). This app is the second project that is part of the <b>Grow with Google Android Developer Nanodegree</b> program run in conjuction with <b>Udacity</b>
 
 <h3>Running the app</h3>
 
@@ -12,4 +12,4 @@ Your gradle.properties file should now look like this TMDBAPIKey = "api key here
 
 
 <b>Author: </b>
-Munene Ndereba
+<a href="https://github.com/muneneisaka" target="_blank">Munene Ndereba</a>
