@@ -3,8 +3,12 @@
 
     <item
         android:id="@+id/sort_top_rated"
-        android:title="Sort User Rating" />
+        android:title="@string/sort_user_rating" />
     <item
         android:id="@+id/sort_popular"
-        android:title="Sort Popular" />
+        android:title="@string/sort_popular_movie" />
+
+    <item
+        android:id="@+id/sort_favorite"
+        android:title="@string/sort_user_favorite" />
 </menu>

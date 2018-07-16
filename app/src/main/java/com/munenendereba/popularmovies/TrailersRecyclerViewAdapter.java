@@ -13,31 +13,33 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 //Movie Adapter to load the recycler view
-public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecyclerViewAdapter.ViewHolder> {
+public class TrailersRecyclerViewAdapter extends RecyclerView.Adapter<TrailersRecyclerViewAdapter.ViewHolder> {
     private ArrayList<String> movieData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
-    MovieRecyclerViewAdapter(Context context, ArrayList<String> data) {
+    TrailersRecyclerViewAdapter(Context context, ArrayList<String> data) {
         this.mInflater = LayoutInflater.from(context);
         this.movieData = data;
     }
 
     @Override
-    public MovieRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.recycler_view_movie_poster, parent, false);
+    public TrailersRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = mInflater.inflate(R.layout.recycler_view_movie_trailer, parent, false);
         return new ViewHolder(view);
     }
 
-    //binds the data to the textview in each cell
+    //binds the videos to the video view
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        //Uri uri = Uri.parse(movieData.get(position));
         Picasso.get()
                 .load(movieData.get(position))
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .error(R.drawable.ic_launcher_foreground)
-                .fit()
-                .into(holder.movieImageView);
+                .resize(371, 125)
+                .centerCrop()
+                .into(holder.trailersImageView);
     }
 
     //get total number of cells
@@ -57,11 +59,11 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        ImageView movieImageView;
+        ImageView trailersImageView;
 
         ViewHolder(View itemView) {
             super(itemView);
-            movieImageView = itemView.findViewById(R.id.movie_image);
+            trailersImageView = itemView.findViewById(R.id.imageViewTrailers);
             itemView.setOnClickListener(this);
         }
 

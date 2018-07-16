@@ -19,4 +19,11 @@
     <string name="detail_plot_placeholder">Plot</string>
 
     <string name="internet_error">No connection to the internet right now! Check back later! :-(</string>
+
+    <string name="sort_user_rating">Top rated</string>
+    <string name="sort_popular_movie">Popular movies</string>
+    <string name="sort_user_favorite">My favorite</string>
+
+    <string name="detail_movie_review_placeholder">This movie was great! I enjoyed the action and the CGI was good.
+    I would recommend it to my friends!</string>
 </resources>

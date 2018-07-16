@@ -5,13 +5,6 @@
     android:orientation="horizontal"
     android:padding="5dp">
 
-    <!--<TextView
-        android:id="@+id/info_text"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:background="@color/colorAccent"/>-->
-
     <ImageView
         android:id="@+id/movie_image"
         android:layout_width="match_parent"
