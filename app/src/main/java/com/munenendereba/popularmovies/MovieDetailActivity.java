@@ -37,7 +37,7 @@ public class MovieDetailActivity extends AppCompatActivity implements TrailersRe
     RecyclerView trailersRecyclerView;
     ArrayList<String> trailerVideos = new ArrayList<>();
     CompoundButton buttonFavorite;
-    MainActivity mainActivity = new MainActivity();
+
     private String TMDBApiKey = BuildConfig.PopularMoviesTMDBAPIKey; //get the API Key from the gradle.properties file
     private FavoriteMovieViewModel favoriteMovieViewModel;
 
@@ -71,6 +71,8 @@ public class MovieDetailActivity extends AppCompatActivity implements TrailersRe
         final String originalTitle = intent.getStringExtra("originalTitle");
         final String plotSynopsis = intent.getStringExtra("plotSynopsis");
         String releaseDate = intent.getStringExtra("releaseDate");
+        //int movieIndex = intent.getIntExtra("movieIndex", 0);
+        //int numItems = intent.getIntExtra("numItems", 0);
 
         //set the data to the controls
         textUserRating.setText(userRating);
@@ -106,7 +108,6 @@ public class MovieDetailActivity extends AppCompatActivity implements TrailersRe
                 processFavorites(isChecked, movieId, originalTitle, relDate, userRating, posterPath, plotSynopsis);
             }
         });
-
 
         setTitle(intent.getStringExtra("movieName"));
     }
@@ -161,11 +162,8 @@ public class MovieDetailActivity extends AppCompatActivity implements TrailersRe
             for (int i = 0; i < jr.length(); i++) {
                 review = "Review by: " + jr.getJSONObject(i).getString("author").toString() + "\n" + jr.getJSONObject(i).getString("content").toString();
                 res.add(review);
-
-                //Log.d("GET-REVIEW: " + i, review);
             }
 
-            //Log.d("ALL-DATA:", res.toString());
             reviewsRecyclerViewAdapter = new ReviewsRecyclerViewAdapter(this, res);
             reviewRecyclerView.setAdapter(reviewsRecyclerViewAdapter);
 
@@ -259,8 +257,8 @@ public class MovieDetailActivity extends AppCompatActivity implements TrailersRe
                 e.printStackTrace();
             }
         } else {
-            //TODO: if the last movie is deleted, show a message and move back to popular movies or in the recylerview, show a placeholder image
             //delete movie from favorites
+            //if (movieIndex == 0 && numItems > 0) {
             try {
                 AsyncTask<String, Void, Integer> l = favoriteMovieViewModel.removeFavoriteMovie(movieId);
                 if (l.get() > 0) {
@@ -272,23 +270,5 @@ public class MovieDetailActivity extends AppCompatActivity implements TrailersRe
                 e.printStackTrace();
             }
         }
-        //mainActivity.showFavoriteMovies(favoriteMovieViewModel.getAllFavoriteMovies().getValue());
-
-        /*//whenever we add or delete a movie, observe the changes and update the recycler view
-        favoriteMovieViewModel.getAllFavoriteMovies().observe(this, new Observer<List<FavoriteMovie>>() {
-            @Override
-            public void onChanged(@Nullable List<FavoriteMovie> favoriteMovies) {
-                ArrayList<String> res = mainActivity.showFavoriteMovies(favoriteMovies);
-                *//*MovieRecyclerViewAdapter mainMovieAdapter = new MovieRecyclerViewAdapter(this, res);
-                mainMovieAdapter.setClickListener(this);
-                mainMovieRecyclerView.setAdapter(mainMovieAdapter);*//*
-                setTitle("My Favorite Movies");
-                //if the favorite movie list is not empty, then show the list, otherwise show a message
-                //if (favoriteMovies.size() == 0)
-
-            }
-        });*/
     }
-
-
 }

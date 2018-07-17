@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
     private String releaseDate;
     private String moviePosterImage;
     private FavoriteMovieViewModel favoriteMovieViewModel;
+    private int menuItemPressed;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -79,9 +80,7 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
             @Override
             public void onChanged(@Nullable List<FavoriteMovie> favoriteMovies) {
                 //if the favorite movie list is not empty, then show the list, otherwise show a message
-                if (favoriteMovies.size() == 0)
-                    showNoFavoritesToastMessage();
-                else {
+                if (favoriteMovies.size() > 0) {
                     ArrayList<String> f = showFavoriteMovies(favoriteMovies);
                     inflateAdapter(f);
                 }
@@ -89,8 +88,29 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
         });
     }
 
-    private void showFavoritesToast() {
-        Toast.makeText(this, "The movie has been added to your favorites", Toast.LENGTH_SHORT).show();
+    @Override
+    public void onResume() {
+        super.onResume();
+        //Log.d("THE-MENU-ITEM:xx", String.valueOf(menuItemPressed));
+        if (menuItemPressed == R.id.sort_popular) {
+            fetchMoviesData("https://api.themoviedb.org/3/movie/popular?api_key=" + TMDBApiKey + "&language=en-US&page=1");
+            setTitle("Popular Movies");
+        } else if (menuItemPressed == R.id.sort_top_rated) {
+            fetchMoviesData("https://api.themoviedb.org/3/movie/top_rated?api_key=" + TMDBApiKey + "&language=en-US&page=1");
+            setTitle("Top Rated Movies");
+        } else if (menuItemPressed == R.id.sort_favorite) {
+            //get all the values
+            List<FavoriteMovie> favoriteMovieList = favoriteMovieViewModel.getAllFavoriteMovies().getValue();
+            if (favoriteMovieList.size() > 0) {
+                ArrayList<String> res = showFavoriteMovies(favoriteMovieList);
+                inflateAdapter(res);
+                setTitle("My Favorite Movies");
+            } else {
+                fetchMoviesData("https://api.themoviedb.org/3/movie/popular?api_key=" + TMDBApiKey + "&language=en-US&page=1");
+                setTitle("Popular Movies");
+                showNoFavoritesToastMessage();
+            }
+        }
     }
 
     //method to check for internet connection and present appropriate UI
@@ -112,17 +132,16 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
     //check the menu item selected and launch the appropriate API call for sorting the movies
     public boolean onOptionsItemSelected(final MenuItem item) {
         //ArrayList<String> res = new ArrayList<>();
-        if (item.getItemId() == R.id.sort_popular) {
+        menuItemPressed = item.getItemId();
+        if (menuItemPressed == R.id.sort_popular) {
             fetchMoviesData("https://api.themoviedb.org/3/movie/popular?api_key=" + TMDBApiKey + "&language=en-US&page=1");
-            //inflateAdapter(res);
             setTitle("Popular Movies");
             return true;
-        } else if (item.getItemId() == R.id.sort_top_rated) {
+        } else if (menuItemPressed == R.id.sort_top_rated) {
             fetchMoviesData("https://api.themoviedb.org/3/movie/top_rated?api_key=" + TMDBApiKey + "&language=en-US&page=1");
-            //inflateAdapter(res);
             setTitle("Top Rated Movies");
             return true;
-        } else if (item.getItemId() == R.id.sort_favorite) {
+        } else if (menuItemPressed == R.id.sort_favorite) {
             //get all the values
             List<FavoriteMovie> favoriteMovieList = favoriteMovieViewModel.getAllFavoriteMovies().getValue();
             if (favoriteMovieList.size() > 0) {
@@ -136,20 +155,22 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
     }
 
     private void showNoFavoritesToastMessage() {
-        Toast.makeText(this, "You don't have any favorites yet; tap a movie and add it to favorites to view the favorites!", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "No favorites movies - tap a movie and add it to favorites to view the favorites!", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onItemClick(View view, int position) {
         //show details of the movie
+        int numItems = adapter.getItemCount();
         if (position >= 0)
-            launchDetailActivity(position);
+            launchDetailActivity(position, numItems);
     }
 
-    private void launchDetailActivity(int index) {
+    private void launchDetailActivity(int index, int numItems) {
         Intent intent = new Intent(this, MovieDetailActivity.class);
         // Movie movie=new Movie();
         if (index >= 0) {
+            if (numItems == 1) menuItemPressed = R.id.sort_popular; //show popular movies if no more favorites
             Movie movie = movies.get(index);
 
             //send the movie data for the selected movie poster to the MovieDetailActivity
@@ -160,6 +181,8 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
             intent.putExtra("plotSynopsis", movie.getPlotSynopsis());
             intent.putExtra("releaseDate", movie.getReleaseDate());
             intent.putExtra("moviePoster", movie.getMoviePosterImage());
+            /*intent.putExtra("movieIndex", index);//index of clicked item
+            intent.putExtra("numItems", numItems);//holds the number of items in the adapter*/
 
             startActivity(intent);
         } else Toast.makeText(this, "No movie to show", Toast.LENGTH_SHORT);
@@ -256,7 +279,6 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
         return res;
     }
 
-    //TODO: after calling observer or adding movie to favorites, or removing it, return to the calling page do NOT go straight to favorites
     private void inflateAdapter(ArrayList<String> res) {
         adapter = new MovieRecyclerViewAdapter(this, res);
         adapter.setClickListener(this);
